@@ -22,6 +22,11 @@
   header h1 { margin: 0; font-size: 30px; color: #1e3d2f; }
   header h1 .en { display: block; font-size: 15px; color: #8a6d1d; letter-spacing: 1px; }
   header p { margin: 6px 0 0; font-size: 14px; }
+  .banner { position: relative; border-radius: 16px; overflow: hidden; margin: 16px 0 8px; border: 2px solid #d4af37; }
+  .banner-art { display: block; width: 100%; height: 150px; }
+  .banner-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px; }
+  .banner-title { font-size: 28px; font-weight: bold; color: #d4af37; }
+  .banner-sub { font-size: 14px; color: #f7f0dc; letter-spacing: 1px; }
   .note { font-size: 13px; background: #efe6c8; border: 1px solid #d4af37; border-radius: 10px; padding: 8px 12px; margin: 12px 0; }
   .panel {
     background: #fffdf4; border: 1px solid #d4af37; border-radius: 14px;
@@ -87,12 +92,18 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="banner">
+    <svg class="banner-art" viewBox="0 0 640 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="stars" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M24 4 L29 19 L44 24 L29 29 L24 44 L19 29 L4 24 L19 19 Z" fill="none" stroke="#d4af37" stroke-width="1.2" opacity="0.35"/><circle cx="24" cy="24" r="2" fill="#d4af37" opacity="0.35"/></pattern></defs><rect width="640" height="160" fill="#1e3d2f"/><rect width="640" height="160" fill="url(#stars)"/></svg>
+    <div class="banner-text">
+      <div class="banner-title">واچ‌لیست MobLand</div>
+      <div class="banner-sub">MobLand — Paramount+</div>
+    </div>
+  </div>
   <header>
-    <h1>واچ‌لیست MobLand <span class="en">MobLand — Paramount+</span></h1>
     <p>درام جنایی • ۲ فصل • ۲۰ قسمت • با تام هاردی، پیرس برازنان و هلن میرن</p>
   </header>
 
-  <div class="note">قسمت پایانی فصل ۲ (ملکه مرده است) هنوز پخش نشده است و در ۲۹ آبان ۱۴۰۵ (۲۰ نوامبر ۲۰۲۶) پخش می‌شود. مدت آن (۴۷ دقیقه) بر اساس فهرست پیش‌ازپخش TVmaze است.</div>
+  <div class="note">قسمت پایانی فصل ۲ (ملکه مرده است) در ۲۹ آبان ۱۴۰۵ (۲۰ نوامبر ۲۰۲۶) پخش شد. مدت آن (۴۷ دقیقه) بر اساس فهرست پیش‌ازپخش TVmaze است.</div>
 
   <div class="panel">
     <div class="progress-text" id="progressText">۰ از ۲۰ قسمت دیده شده</div>
@@ -109,7 +120,7 @@
 
   <div id="seasons"></div>
 
-  <footer>آخرین به‌روزرسانی: ۲۷ آبان ۱۴۰۵ (۱۸ نوامبر ۲۰۲۶) — نسخه ۱<br>داده قسمت‌ها از TVmaze • تیک‌ها روی همین گوشی ذخیره می‌شوند</footer>
+  <footer>آخرین به‌روزرسانی: ۲۹ آبان ۱۴۰۵ (۲۰ نوامبر ۲۰۲۶) — نسخه ۲<br>داده قسمت‌ها از TVmaze • تیک‌ها روی همین گوشی ذخیره می‌شوند</footer>
 </div>
 
 <script>
@@ -134,7 +145,7 @@ var EPISODES = [
   { id: "s2e7",  s: 2, n: 7,  fa: "آس پیک",                  en: "Ace of Spades",         g: "۳۰ اکتبر ۲۰۲۶",  j: "۸ آبان ۱۴۰۵",      rt: 53, sum: "هریگان‌ها کاتسولدز را قفل می‌کنند و به لندن برمی‌گردند تا با پول و تهدید وفاداری بخرند." },
   { id: "s2e8",  s: 2, n: 8,  fa: "دیگر حرف نمی‌زنیم",       en: "We Don't Talk Anymore", g: "۶ نوامبر ۲۰۲۶",  j: "۱۵ آبان ۱۴۰۵",     rt: 42, sum: "حمله پنهانی هری به جنگ بنزین می‌ریزد و ادی زیر دستکاری‌های میو بیشتر از خط خارج می‌شود." },
   { id: "s2e9",  s: 2, n: 9,  fa: "فروپاشی عصبی",            en: "Nervous Breakdown",     g: "۱۳ نوامبر ۲۰۲۶", j: "۲۲ آبان ۱۴۰۵",     rt: 47, sum: "فرانکی همه‌چیز را به‌هم می‌ریزد و ادی آخرین فرصت را می‌گیرد تا ارزشش را ثابت کند." },
-  { id: "s2e10", s: 2, n: 10, fa: "ملکه مرده است",           en: "The Queen is Dead",     g: "۲۰ نوامبر ۲۰۲۶", j: "۲۹ آبان ۱۴۰۵",     rt: 47, sum: "یورش‌های هماهنگ امپراتوری هریگان‌ها را به آتش می‌کشند و هری با برکت کنراد معامله‌ای وحشیانه می‌بندد." }
+  { id: "s2e10", s: 2, n: 10, fa: "ملکه مرده است",           en: "The Queen Is Dead",     g: "۲۰ نوامبر ۲۰۲۶", j: "۲۹ آبان ۱۴۰۵",     rt: 47, sum: "یورش‌های هماهنگ امپراتوری هریگان‌ها را به آتش می‌کشند و هری با برکت کنراد معامله‌ای وحشیانه می‌بندد." }
 ];
 var KEY_W = "watchlist-mobland-v1";
 var KEY_S = "watchlist-mobland-stops-v1";
