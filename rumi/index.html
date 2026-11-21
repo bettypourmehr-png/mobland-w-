@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Rumi">
+<meta name="theme-color" content="#1e3d2f">
+<title>واچ‌لیست Rumi</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%231e3d2f'/%3E%3Ctext x='90' y='114' font-family='Arial, sans-serif' font-size='62' font-weight='bold' fill='%23d4af37' text-anchor='middle'%3ERM%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%231e3d2f'/%3E%3Ctext x='90' y='114' font-family='Arial, sans-serif' font-size='62' font-weight='bold' fill='%23d4af37' text-anchor='middle'%3ERM%3C/text%3E%3C/svg%3E">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0 14px 40px;
+    background: #f6efdb; color: #1e3d2f;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header { text-align: center; padding: 22px 0 6px; }
+  header h1 { margin: 0; font-size: 30px; color: #1e3d2f; }
+  header h1 .en { display: block; font-size: 15px; color: #8a6d1d; letter-spacing: 1px; }
+  header p { margin: 6px 0 0; font-size: 14px; }
+  .banner { position: relative; border-radius: 16px; overflow: hidden; margin: 16px 0 8px; border: 2px solid #d4af37; }
+  .banner-art { display: block; width: 100%; height: 150px; }
+  .banner-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px; }
+  .banner-title { font-size: 28px; font-weight: bold; color: #d4af37; }
+  .banner-sub { font-size: 14px; color: #f7f0dc; letter-spacing: 1px; }
+  .note { font-size: 13px; background: #efe6c8; border: 1px solid #d4af37; border-radius: 10px; padding: 8px 12px; margin: 12px 0; }
+  .panel {
+    background: #fffdf4; border: 1px solid #d4af37; border-radius: 14px;
+    padding: 14px; margin: 14px 0;
+  }
+  .progress-text { font-weight: bold; font-size: 17px; }
+  .progress-sub { font-size: 14px; }
+  .bar { height: 12px; background: #e2d9b8; border-radius: 6px; overflow: hidden; margin-top: 8px; }
+  .bar-fill { height: 100%; background: #d4af37; width: 0%; transition: width .3s; }
+  .next-title { font-weight: bold; font-size: 17px; color: #1e3d2f; }
+  .next-title .en { font-size: 13px; color: #6b5a2a; }
+  .next-stop { font-size: 14px; }
+  .btn {
+    display: inline-block; border: none; cursor: pointer;
+    background: #d4af37; color: #1e3d2f; font-weight: bold; font-size: 15px;
+    font-family: inherit; border-radius: 10px; padding: 9px 16px; margin: 4px 4px 0 0;
+  }
+  .btn.danger { background: #1e3d2f; color: #f7f0dc; }
+  .btn.confirm { background: #b3261e; color: #fff; }
+  .season-head {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #1e3d2f; color: #f7f0dc; border-radius: 12px;
+    padding: 10px 14px; margin: 20px 0 10px; cursor: pointer;
+    user-select: none; -webkit-user-select: none;
+  }
+  .season-head h2 { margin: 0; font-size: 18px; color: #d4af37; }
+  .season-head .sprog { font-size: 14px; color: #f7f0dc; }
+  .season-head .chev { font-size: 18px; color: #d4af37; }
+  .season.collapsed .eps { display: none; }
+  .season.collapsed .chev { transform: rotate(-90deg); display: inline-block; }
+  .ep {
+    background: #1e3d2f; color: #f7f0dc; border-radius: 14px;
+    padding: 13px 14px; margin: 10px 0; cursor: pointer;
+    border: 2px solid transparent;
+  }
+  .ep.watched { border-color: #d4af37; opacity: .85; }
+  .ep-top { display: flex; gap: 12px; align-items: flex-start; }
+  .num {
+    flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%;
+    background: #d4af37; color: #1e3d2f; font-weight: bold; font-size: 16px;
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .ep-body { flex: 1; min-width: 0; }
+  .ep-title { font-size: 17px; font-weight: bold; color: #d4af37; }
+  .ep-title .en { font-size: 13px; color: #e8d9a0; font-weight: normal; }
+  .ep-meta { font-size: 13px; color: #d8cfae; margin-top: 2px; }
+  .ep-sum { font-size: 14px; margin-top: 6px; color: #f7f0dc; }
+  .ep-check { font-size: 13px; color: #d4af37; margin-top: 6px; font-weight: bold; }
+  .stop-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 10px; padding-top: 10px; border-top: 1px dashed #4a6b57;
+    font-size: 14px; cursor: default;
+  }
+  .stop-row label { color: #f7f0dc; }
+  .stop-row input {
+    width: 74px; padding: 6px 8px; border-radius: 8px; border: 1px solid #d4af37;
+    background: #f7f0dc; color: #1e3d2f; font-size: 16px; font-family: inherit;
+    text-align: center;
+  }
+  .stop-label { color: #e8d9a0; }
+  footer { text-align: center; font-size: 12px; color: #6b5a2a; margin-top: 26px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="banner">
+    <svg class="banner-art" viewBox="0 0 640 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="stars" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M24 4 L29 19 L44 24 L29 29 L24 44 L19 29 L4 24 L19 19 Z" fill="none" stroke="#d4af37" stroke-width="1.2" opacity="0.35"/><circle cx="24" cy="24" r="2" fill="#d4af37" opacity="0.35"/></pattern></defs><rect width="640" height="160" fill="#1e3d2f"/><rect width="640" height="160" fill="url(#stars)"/></svg>
+    <div class="banner-text">
+      <div class="banner-title">واچ‌لیست Rumi</div>
+      <div class="banner-sub">Mevlânâ Celâleddîn-i Rûmî — tabii</div>
+    </div>
+  </div>
+  <header>
+    <p>درام تاریخی • ۳ فصل • ۳۰ قسمت • با بولنت اینال در نقش مولانا</p>
+  </header>
+
+  <div class="note">برای قسمت‌های فصل ۲ و ۳ در منابع انگلیسی خلاصه‌ای منتشر نشده است.</div>
+
+  <div class="panel">
+    <div class="progress-text" id="progressText">۰ از ۳۰ قسمت دیده شده</div>
+    <div class="progress-sub" id="progressSub">۰٪ • ۰ دقیقه باقی مانده</div>
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+  </div>
+
+  <div class="panel" id="nextPanel"></div>
+
+  <div>
+    <button class="btn" id="checkAllBtn" type="button">تیک زدن همه</button>
+    <button class="btn danger" id="resetBtn" type="button">ریست</button>
+  </div>
+
+  <div id="seasons"></div>
+
+  <footer>آخرین به‌روزرسانی: ۲۹ آبان ۱۴۰۵ (۲۰ نوامبر ۲۰۲۶) — نسخه ۱<br>داده قسمت‌ها از TVmaze • تیک‌ها روی همین گوشی ذخیره می‌شوند</footer>
+</div>
+
+<script>
+"use strict";
+var EPISODES = [
+  { id: "s1e1", s: 1, n: 1, fa: "قسمت ۱", en: "BÖLÜM 1", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "مولانا در رؤیایی آمدن مغولان به قلمرو سلجوقیان را پیش‌بینی می‌کند و برخی در قونیه به جایگاه بلند او حسادت می‌ورزند." },
+  { id: "s1e2", s: 1, n: 2, fa: "قسمت ۲", en: "BÖLÜM 2", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "بایجو نویان، سردار مغول، به دژ ارزروم حمله می‌کند و مولانا در قونیه در آستانه مکاشفه‌ای معنوی است." },
+  { id: "s1e3", s: 1, n: 3, fa: "قسمت ۳", en: "BÖLÜM 3", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "بایجو سرانجام دژ ارزروم را فتح می‌کند و مولانا در قونیه با مراقبت از یک مجنون به رازهای آسمانی پی می‌برد." },
+  { id: "s1e4", s: 1, n: 4, fa: "قسمت ۴", en: "BÖLÜM 4", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "مولانا با فتنه‌ای که او را هوادار مغولان می‌خواند دست‌وپنجه نرم می‌کند و سلطان از سقوط دژهای سیواس و ارزنجان به دست بایجو آگاه می‌شود." },
+  { id: "s1e5", s: 1, n: 5, fa: "قسمت ۵", en: "BÖLÜM 5", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "اصفهانی سوکتای را پس از زندانی سخت آزاد می‌کند تا او را علیه مولانا بشوراند." },
+  { id: "s1e6", s: 1, n: 6, fa: "قسمت ۶", en: "BÖLÜM 6", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "مولانا سوکتای، پسر بایجو، را در مدرسه‌اش می‌پذیرد و سوکتای با وجود مأموریت جاسوسی، سخت تحت تأثیر تعالیم او قرار می‌گیرد." },
+  { id: "s1e7", s: 1, n: 7, fa: "قسمت ۷", en: "BÖLÜM 7", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "سلطان تصمیم می‌گیرد علیه مغولان اعلام جنگ کند و هویت سوکتای لو می‌رود و حکم مرگش صادر می‌شود." },
+  { id: "s1e8", s: 1, n: 8, fa: "قسمت ۸", en: "BÖLÜM 8", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "مولانا سوکتای را زیر حمایت خود می‌گیرد، چون مرگ او جنگی تمام‌عیار میان سلجوقیان و مغولان به راه می‌اندازد." },
+  { id: "s1e9", s: 1, n: 9, fa: "قسمت ۹", en: "BÖLÜM 9", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "هیچ‌یک از امیرنشین‌های وابسته از سلجوقیان در برابر مغولان پشتیبانی نمی‌کنند، اما ارطغرل غازی ناگهان برای یاری از راه می‌رسد." },
+  { id: "s1e10", s: 1, n: 10, fa: "قسمت ۱۰", en: "BÖLÜM 10", g: "۷ مه ۲۰۲۳", j: "۱۷ اردیبهشت ۱۴۰۲", rt: 70, sum: "شمس پس از رؤیایی همانند رؤیای مولانا راهی می‌شود و در کاروان‌سرایی روشن می‌شود که باید به قونیه برود؛ آغاز سفر واقعی شمس." },
+  { id: "s2e1", s: 2, n: 1, fa: "قسمت ۱", en: "11. Bölüm", g: "۹ دسامبر ۲۰۲۳", j: "۱۸ آذر ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e2", s: 2, n: 2, fa: "قسمت ۲", en: "12. Bölüm", g: "۱۶ دسامبر ۲۰۲۳", j: "۲۵ آذر ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e3", s: 2, n: 3, fa: "قسمت ۳", en: "13. Bölüm", g: "۲۳ دسامبر ۲۰۲۳", j: "۲ دی ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e4", s: 2, n: 4, fa: "قسمت ۴", en: "14. Bölüm", g: "۳۰ دسامبر ۲۰۲۳", j: "۹ دی ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e5", s: 2, n: 5, fa: "قسمت ۵", en: "15. Bölüm", g: "۶ ژانویه ۲۰۲۴", j: "۱۶ دی ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e6", s: 2, n: 6, fa: "قسمت ۶", en: "16. Bölüm", g: "۱۳ ژانویه ۲۰۲۴", j: "۲۳ دی ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e7", s: 2, n: 7, fa: "قسمت ۷", en: "17. Bölüm", g: "۲۰ ژانویه ۲۰۲۴", j: "۳۰ دی ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e8", s: 2, n: 8, fa: "قسمت ۸", en: "18. Bölüm", g: "۲۷ ژانویه ۲۰۲۴", j: "۷ بهمن ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e9", s: 2, n: 9, fa: "قسمت ۹", en: "19. Bölüm", g: "۳ فوریه ۲۰۲۴", j: "۱۴ بهمن ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s2e10", s: 2, n: 10, fa: "قسمت ۱۰", en: "20. Bölüm", g: "۱۰ فوریه ۲۰۲۴", j: "۲۱ بهمن ۱۴۰۲", rt: 70, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e1", s: 3, n: 1, fa: "قسمت ۱", en: "21. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 63, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e2", s: 3, n: 2, fa: "قسمت ۲", en: "22. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 62, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e3", s: 3, n: 3, fa: "قسمت ۳", en: "23. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 60, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e4", s: 3, n: 4, fa: "قسمت ۴", en: "24. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 60, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e5", s: 3, n: 5, fa: "قسمت ۵", en: "25. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 73, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e6", s: 3, n: 6, fa: "قسمت ۶", en: "26. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 73, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e7", s: 3, n: 7, fa: "قسمت ۷", en: "27. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 62, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e8", s: 3, n: 8, fa: "قسمت ۸", en: "28. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 64, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e9", s: 3, n: 9, fa: "قسمت ۹", en: "29. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 76, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." },
+  { id: "s3e10", s: 3, n: 10, fa: "قسمت ۱۰", en: "30. Bölüm", g: "۷ مارس ۲۰۲۵", j: "۱۷ اسفند ۱۴۰۳", rt: 61, sum: "خلاصه‌ای برای این قسمت منتشر نشده است." }
+];
+var KEY_W = "watchlist-rumi-v1";
+var KEY_S = "watchlist-rumi-stops-v1";
+var SEASON_YEAR = { 1: "۲۰۲۳", 2: "۲۰۲۳–۲۰۲۴", 3: "۲۰۲۵" };
+
+function faNum(n) {
+  return String(n).replace(/\d/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[d]; });
+}
+function load(key) {
+  try {
+    var v = JSON.parse(localStorage.getItem(key));
+    return (v && typeof v === "object") ? v : {};
+  } catch (e) { return {}; }
+}
+function save(key, obj) {
+  try { localStorage.setItem(key, JSON.stringify(obj)); } catch (e) {}
+}
+var watched = load(KEY_W);
+var stops = load(KEY_S);
+var collapsed = {};
+
+function epById(id) {
+  for (var i = 0; i < EPISODES.length; i++) if (EPISODES[i].id === id) return EPISODES[i];
+  return null;
+}
+function watchedCount() {
+  var c = 0;
+  for (var i = 0; i < EPISODES.length; i++) if (watched[EPISODES[i].id]) c++;
+  return c;
+}
+function seasonCount(s) {
+  var c = 0, t = 0;
+  for (var i = 0; i < EPISODES.length; i++) {
+    if (EPISODES[i].s === s) { t++; if (watched[EPISODES[i].id]) c++; }
+  }
+  return { c: c, t: t };
+}
+function remainingTotal() {
+  var sum = 0;
+  for (var i = 0; i < EPISODES.length; i++) {
+    var ep = EPISODES[i];
+    if (!watched[ep.id]) sum += Math.max(0, ep.rt - (stops[ep.id] || 0));
+  }
+  return sum;
+}
+function nextEpisode() {
+  for (var i = 0; i < EPISODES.length; i++) if (!watched[EPISODES[i].id]) return EPISODES[i];
+  return null;
+}
+function stopText(ep) {
+  var m = stops[ep.id] || 0;
+  if (m <= 0) return "";
+  var left = Math.max(0, ep.rt - m);
+  return "تا دقیقه " + faNum(m) + " تماشا شده • " + faNum(left) + " دقیقه مانده";
+}
+
+function renderProgress() {
+  var c = watchedCount(), total = EPISODES.length;
+  var pct = Math.round(c / total * 100);
+  document.getElementById("progressText").textContent = faNum(c) + " از " + faNum(total) + " قسمت دیده شده";
+  document.getElementById("progressSub").textContent = faNum(pct) + "٪ • " + faNum(remainingTotal()) + " دقیقه باقی مانده";
+  document.getElementById("barFill").style.width = pct + "%";
+}
+function renderNext() {
+  var panel = document.getElementById("nextPanel");
+  var ep = nextEpisode();
+  if (!ep) {
+    panel.innerHTML = '<div class="next-title">همه قسمت‌ها دیده شده‌اند.</div>';
+    return;
+  }
+  var stop = stopText(ep);
+  panel.innerHTML =
+    '<div style="font-size:13px;color:#6b5a2a;">قسمت بعدی</div>' +
+    '<div class="next-title">' + ep.fa + ' <span class="en">(' + ep.en + ")</span></div>" +
+    '<div class="ep-meta" style="color:#6b5a2a;">فصل ' + faNum(ep.s) + " • قسمت " + faNum(ep.n) + " • " + ep.j + " (" + ep.g + ") • " + faNum(ep.rt) + " دقیقه</div>" +
+    (stop ? '<div class="next-stop">' + stop + "</div>" : "") +
+    '<button class="btn" id="nextSeenBtn" type="button">دیدم</button>';
+  document.getElementById("nextSeenBtn").addEventListener("click", function () {
+    markWatched(ep.id);
+  });
+}
+function renderSeasons() {
+  var host = document.getElementById("seasons");
+  var html = "";
+  [1, 2, 3].forEach(function (s) {
+    var sc = seasonCount(s);
+    html += '<div class="season' + (collapsed[s] ? " collapsed" : "") + '" id="season-' + s + '">' +
+      '<div class="season-head" data-season="' + s + '">' +
+        "<h2>فصل " + faNum(s) + " — " + SEASON_YEAR[s] + "</h2>" +
+        '<span class="sprog">' + faNum(sc.c) + " از " + faNum(sc.t) + " دیده شده</span>" +
+        '<span class="chev">▾</span>' +
+      "</div>" +
+      '<div class="eps">';
+    EPISODES.forEach(function (ep) {
+      if (ep.s !== s) return;
+      var isW = !!watched[ep.id];
+      var stop = stopText(ep);
+      html += '<div class="ep' + (isW ? " watched" : "") + '" data-id="' + ep.id + '">' +
+        '<div class="ep-top">' +
+          '<div class="num">' + (isW ? "✓" : faNum(ep.n)) + "</div>" +
+          '<div class="ep-body">' +
+            '<div class="ep-title">' + ep.fa + ' <span class="en">(' + ep.en + ")</span></div>" +
+            '<div class="ep-meta">قسمت ' + faNum(ep.n) + " • " + ep.j + " (" + ep.g + ") • " + faNum(ep.rt) + " دقیقه</div>" +
+            '<div class="ep-sum">' + ep.sum + "</div>" +
+            (isW ? '<div class="ep-check">✓ دیده شده</div>' : "") +
+            (isW ? "" :
+              '<div class="stop-row">' +
+                "<label>تا دقیقه</label>" +
+                '<input type="number" min="0" max="' + ep.rt + '" inputmode="numeric" value="' + (stops[ep.id] || "") + '" data-id="' + ep.id + '" aria-label="تا دقیقه">' +
+                '<span class="stop-label" data-stop-label="' + ep.id + '">' + stop + "</span>" +
+              "</div>") +
+          "</div>" +
+        "</div>" +
+      "</div>";
+    });
+    html += "</div></div>";
+  });
+  host.innerHTML = html;
+  attachHandlers();
+}
+function updateStopLabel(epId) {
+  var ep = epById(epId);
+  var label = document.querySelector('[data-stop-label="' + epId + '"]');
+  if (label) label.textContent = stopText(ep);
+}
+function attachHandlers() {
+  var cards = document.querySelectorAll(".ep");
+  cards.forEach(function (card) {
+    card.addEventListener("click", function () {
+      toggleWatched(card.getAttribute("data-id"));
+    });
+  });
+  var rows = document.querySelectorAll(".stop-row");
+  rows.forEach(function (row) {
+    row.addEventListener("click", function (e) { e.stopPropagation(); });
+  });
+  var inputs = document.querySelectorAll(".stop-row input");
+  inputs.forEach(function (input) {
+    input.addEventListener("click", function (e) { e.stopPropagation(); });
+    input.addEventListener("input", function () {
+      var ep = epById(input.getAttribute("data-id"));
+      var v = parseInt(input.value, 10);
+      if (isNaN(v) || v <= 0) {
+        delete stops[ep.id];
+      } else {
+        if (v > ep.rt) { v = ep.rt; input.value = String(v); }
+        stops[ep.id] = v;
+      }
+      save(KEY_S, stops);
+      updateStopLabel(ep.id);
+      renderProgress();
+      renderNext();
+    });
+  });
+  var heads = document.querySelectorAll(".season-head");
+  heads.forEach(function (head) {
+    head.addEventListener("click", function () {
+      var s = head.getAttribute("data-season");
+      var sec = document.getElementById("season-" + s);
+      sec.classList.toggle("collapsed");
+      collapsed[s] = sec.classList.contains("collapsed");
+    });
+  });
+}
+function toggleWatched(id) {
+  if (watched[id]) { delete watched[id]; }
+  else { watched[id] = true; delete stops[id]; }
+  save(KEY_W, watched);
+  save(KEY_S, stops);
+  renderAll();
+}
+function markWatched(id) {
+  watched[id] = true;
+  delete stops[id];
+  save(KEY_W, watched);
+  save(KEY_S, stops);
+  renderAll();
+}
+function renderAll() {
+  renderProgress();
+  renderNext();
+  renderSeasons();
+}
+
+var confirmTimer = null;
+function twoStep(btn, label, action) {
+  if (btn.getAttribute("data-armed") === "1") {
+    clearTimeout(confirmTimer);
+    btn.removeAttribute("data-armed");
+    btn.classList.remove("confirm");
+    btn.textContent = label;
+    action();
+    return;
+  }
+  btn.setAttribute("data-armed", "1");
+  btn.classList.add("confirm");
+  btn.textContent = "مطمئنی؟ دوباره بزن";
+  clearTimeout(confirmTimer);
+  confirmTimer = setTimeout(function () {
+    btn.removeAttribute("data-armed");
+    btn.classList.remove("confirm");
+    btn.textContent = label;
+  }, 3000);
+}
+document.getElementById("checkAllBtn").addEventListener("click", function () {
+  var btn = this;
+  twoStep(btn, "تیک زدن همه", function () {
+    EPISODES.forEach(function (ep) { watched[ep.id] = true; });
+    stops = {};
+    save(KEY_W, watched);
+    save(KEY_S, stops);
+    renderAll();
+  });
+});
+document.getElementById("resetBtn").addEventListener("click", function () {
+  var btn = this;
+  twoStep(btn, "ریست", function () {
+    watched = {};
+    stops = {};
+    save(KEY_W, watched);
+    save(KEY_S, stops);
+    renderAll();
+  });
+});
+
+renderAll();
+</script>
+</body>
+</html>
